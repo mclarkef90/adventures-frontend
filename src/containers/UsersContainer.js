@@ -19,6 +19,7 @@ class UserContainer extends React.Component {
       <NavBar/>
       <br/>
       <Switch>
+      
         <Route  path='/users/:id' render={(routerProps) => <User {...routerProps} users={this.props.users}/>}/>
         <Route  path='/users' render={(routerProps) => <UsersList {...routerProps} users={this.props.users}/>}/>
 
