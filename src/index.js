@@ -4,10 +4,17 @@ import './index.css';
 import MyApp from './MyApp';
 import * as serviceWorker from './serviceWorker';
 
+import {createStore, applyMiddleware} from 'redux';
+import {thunk} from 'redux-thunk';
+import {Provider} from 'react-redux'
+
+
 ReactDOM.render(
+  <Provider>
   <React.StrictMode>
     <MyApp />
-  </React.StrictMode>,
+  </React.StrictMode>
+  </Provider>,
   document.getElementById('root')
 );
 
