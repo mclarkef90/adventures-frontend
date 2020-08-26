@@ -23,6 +23,17 @@ const NavBar = () => {
       }}
       >Users
     </NavLink>
+
+    <NavLink
+      to="/users/new"
+      exact
+      style={link}
+      activeStyle={{
+        background: 'darkblue'
+      }}
+      >Create User Profile
+    </NavLink>
+
     <NavLink
       to="/adventures"
       exact

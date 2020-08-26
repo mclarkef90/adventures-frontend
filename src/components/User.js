@@ -12,11 +12,18 @@ const User = (props) => {
   return (
 
     <div>
-    <h2>Name: {user ? user.name : null} </h2>
+    <h3>Profile - Edit | Delete</h3>
+    <p>Name: {user ? user.name : null} </p>
     <p>Email: {user ? user.email : null} </p>
     <p>Location: {user ? user.city : null}, {user ? user.state : null} </p>
     <p>Adventures</p>
+
+    {user ? user.adventures.map(adventure => <ul>{adventure.title} - Edit | Delete</ul>) : null}
+
     <p>Comments</p>
+
+    {user ? user.comments.map(comment => <ul>{comment.text} - Edit | Delete</ul>) : null}
+
     </div>
   )
 }

@@ -14,7 +14,7 @@ const Adventure = (props) => {
     <img src= {adventure ? adventure.image_url : null} />
     <p>{adventure ? adventure.description : null} </p>
     <a href={adventure ? adventure.website_url : null}>Learn More</a>
-    <p>Likes: {adventure ? adventure.likes : null} </p>
+    <p>Like: {adventure ? <button data-id= {adventure.id} data-likes={adventure.likes} onClick={props.likeHandler}>{adventure.likes}</button> : null} </p>
 
     <h3>Comments: </h3>
     {adventure ? adventure.comments.map(comment => <p>{comment.text}</p>) : null}

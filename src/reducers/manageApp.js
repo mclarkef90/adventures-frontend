@@ -8,7 +8,7 @@ export default function manageApp(state= {
       return {
         ...state,
         users: action.payload,
-        
+
         }
 
     case 'FETCH_ADVENTURES':
@@ -16,6 +16,18 @@ export default function manageApp(state= {
         ...state,
         adventures: action.payload
       }
+
+    case 'ADD_LIKE':
+      let likesUpdate= [...state.adventures].filter(adventure => adventure.id !== action.payload.id)
+      return {
+        ...state, adventures: [...likesUpdate, action.payload],
+      }
+
+      case 'CREATE_USER':
+        let usersUpdate= [...state.users].filter(user => user.id !== action.payload.id)
+        return {
+          ...state, users: [...usersUpdate, action.payload],
+        }
 
     default:
       return state
