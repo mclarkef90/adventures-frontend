@@ -60,10 +60,10 @@ class NewUserForm extends React.Component {
 
 }
 
-const mapStateToProps = state => {
-  return {
-  users: state.users
-  }
-}
+// const mapStateToProps = state => {
+//   return {
+//   users: state.users
+//   }
+// }
 
-export default connect(mapStateToProps, {createUser})(NewUserForm)
+export default connect(null, {createUser})(NewUserForm)

@@ -25,7 +25,7 @@ const NavBar = () => {
     </NavLink>
 
     <NavLink
-      to="/users/new"
+      to="/new"
       exact
       style={link}
       activeStyle={{

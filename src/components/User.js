@@ -1,5 +1,6 @@
 import React from 'react'
-import {Redirect} from 'react-router-dom'
+import {Link, Redirect, Route} from 'react-router-dom'
+import EditUser from './EditUser';
 
 const User = (props) => {
 
@@ -9,26 +10,37 @@ const User = (props) => {
 
   console.log(user)
 
-
-
   return (
-
+    <>
     <div>
+    {user ?
+      <>
+
+
     <h3>Profile</h3>
-    <button data-id={user ? user.id : null}>Edit</button> <nbsp/> <button onClick={(id) => props.handleDelete(user.id)} >Delete</button>
-    <p>Name: {user ? user.name : null} </p>
-    <p>Email: {user ? user.email : null} </p>
-    <p>Location: {user ? user.city : null}, {user ? user.state : null} </p>
+
+
+    <Link to={`/edit/${user.id}`}>Edit</Link>
+    <nbsp/> <button onClick={(id) => props.handleDelete(user.id)} >Delete</button>
+    <p>Name: {user.name} </p>
+    <p>Email: {user.email}</p>
+    <p>Location: {user.city}, {user.state} </p>
     <p>Adventures</p>
 
-    {user ? user.adventures.map(adventure => <ul>{adventure.title} - Edit | Delete</ul>) : null}
+    {user.adventures.map(adventure => <ul>{adventure.title} - Edit | Delete</ul>)}
 
     <p>Comments</p>
 
-    {user ? user.comments.map(comment => <ul>{comment.text} - Edit | Delete</ul>) : null}
+    {user.comments.map(comment => <ul>{comment.text} - Edit | Delete</ul>)}
 
+    </>
+    :
+    null
+
+    }
     </div>
+    </>
   )
-}
+  }
 
-export default User
+  export default User
