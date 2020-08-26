@@ -4,6 +4,8 @@ import UsersList from '../components/UsersList';
 import User from '../components/User';
 import NewUserForm from '../components/NewUserForm';
 import { fetchUsers } from '../actions/fetchUsers.js';
+import { deleteUser } from '../actions/deleteUser.js';
+
 import {Route, Switch} from 'react-router-dom'
 import NavBar from '../components/NavBar'
 
@@ -13,6 +15,11 @@ class UserContainer extends React.Component {
     this.props.fetchUsers()
   }
 
+  handleDelete =(event) => {
+    let id= event
+    this.props.deleteUser(id)
+    }
+
   render(){
     return(
       <div>
@@ -20,8 +27,8 @@ class UserContainer extends React.Component {
       <br/>
       <Switch>
 
-        <Route exact path='/users/new' render={(routerProps) => <NewUserForm {...routerProps}/> }/>
-        <Route path='/users/:id' render={(routerProps) => <User {...routerProps} users={this.props.users}/>}/>
+        <Route exact path='/users/new' render={(routerProps) => <NewUserForm {...routerProps} /> }/>
+        <Route path='/users/:id' render={(routerProps) => <User {...routerProps} users={this.props.users} handleDelete={this.handleDelete}/>}/>
         <Route path='/users' render={(routerProps) => <UsersList {...routerProps} users={this.props.users}/>}/>
 
       </Switch>
@@ -36,4 +43,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {fetchUsers})(UserContainer)
+export default connect(mapStateToProps, {fetchUsers, deleteUser})(UserContainer)

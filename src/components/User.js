@@ -9,10 +9,13 @@ const User = (props) => {
 
   console.log(user)
 
+
+
   return (
 
     <div>
-    <h3>Profile - Edit | Delete</h3>
+    <h3>Profile</h3>
+    <button data-id={user ? user.id : null}>Edit</button> <nbsp/> <button onClick={(id) => props.handleDelete(user.id)} >Delete</button>
     <p>Name: {user ? user.name : null} </p>
     <p>Email: {user ? user.email : null} </p>
     <p>Location: {user ? user.city : null}, {user ? user.state : null} </p>
