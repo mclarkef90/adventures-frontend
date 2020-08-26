@@ -6,7 +6,7 @@ import NewUserForm from '../components/NewUserForm';
 import { fetchUsers } from '../actions/fetchUsers.js';
 import { deleteUser } from '../actions/deleteUser.js';
 
-import {Route, Switch} from 'react-router-dom'
+import {Route, Switch, Redirect} from 'react-router-dom'
 import NavBar from '../components/NavBar'
 
 class UserContainer extends React.Component {
@@ -18,6 +18,7 @@ class UserContainer extends React.Component {
   handleDelete =(event) => {
     let id= event
     this.props.deleteUser(id)
+    return <Redirect to="/users"/>
     }
 
   render(){
