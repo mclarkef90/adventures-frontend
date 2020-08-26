@@ -39,6 +39,7 @@ class UserContainer extends React.Component {
         <Route path='/users/:id' render={(routerProps) => <User {...routerProps} users={this.props.users} handleDelete={this.handleDelete} handleEdit={this.handleEdit}/>}/>
 
 
+
         <Route path='/users' render={(routerProps) => <UsersList {...routerProps} users={this.props.users}/>}/>
 
       </Switch>

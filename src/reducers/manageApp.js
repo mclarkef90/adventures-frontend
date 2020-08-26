@@ -35,6 +35,14 @@ export default function manageApp(state= {
         ...state, users: [...userslist]
       }
 
+    case 'EDIT_USER':
+    let usersEdit= [...state.users].filter(user => user.id !== action.payload.id)
+    console.log(action.payload)
+
+      return {
+        ...state, users: [...usersEdit, action.payload]
+      }
+
     default:
       return state
   }
