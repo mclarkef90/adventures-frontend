@@ -35,7 +35,7 @@ class UserContainer extends React.Component {
       <Switch>
 
         <Route path='/new' render={(routerProps) => <NewUserForm {...routerProps} /> }/>
-        <Route path='/users/:id' render={(routerProps) => <User {...routerProps} users={this.props.users} handleDelete={this.handleDelete} handleEdit={this.handleEdit}/>}/>
+        <Route path='/users/:id' render={(routerProps) => <User {...routerProps} adventures= {this.props.adventures} users={this.props.users} handleDelete={this.handleDelete} handleEdit={this.handleEdit}/>}/>
         <Route path='/users' render={(routerProps) => <UsersList {...routerProps} users={this.props.users}/>}/>
         <Route path='/edit/:id' render={(routerProps) => <EditUser {...routerProps} users={this.props.users !== [] && this.props.users} />}/>
       </Switch>
@@ -47,7 +47,7 @@ class UserContainer extends React.Component {
 const mapStateToProps = state => {
   return {
   users: state.users,
-  activites: state.activities
+  adventures: state.adventures
   }
 }
 

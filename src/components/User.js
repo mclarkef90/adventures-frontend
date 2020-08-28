@@ -37,12 +37,12 @@ const User = (props) => {
     <Link to={`/users/${user.id}/adventures/new`}>Add New Adventure</Link><br/><br/><br/>
 
     <AdventuresList userAdventures={user.adventures}/>
-    <CommentsList comments={user.comments}/>
+    // <CommentsList adventures={props.adventures} comments={user.comments}/>
 
     <Switch>
 
     <Route path="/users/:id/edit" render={(routerProps) => <EditUser0 {...routerProps} user={user}/>}/>
-    <Route path="/users/:id/comments" render={() => <CommentsList comments={user.comments}/>}/>
+    <Route path="/users/:id/comments" render={() => <CommentsList comments={user.comments} adventures={props.adventures}/>}/>
 
 
 

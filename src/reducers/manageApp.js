@@ -66,6 +66,11 @@ export default function manageApp(state= {
           ...state, adventures: [...adventuresUpdate, action.payload]
         }
 
+    case 'UPDATE_COMMENT':
+      return {
+        state
+      }
+
     default:
       return state
   }
