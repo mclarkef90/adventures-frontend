@@ -17,6 +17,7 @@ const Adventure = (props) => {
     <p>Like: {adventure ? <button data-id= {adventure.id} data-likes={adventure.likes} onClick={props.likeHandler}>{adventure.likes}</button> : null} </p>
 
     <h3>Comments: </h3>
+    <button>Add a Comment</button>
     {adventure ? adventure.comments.map(comment => <p>{comment.text}</p>) : null}
     </div>
   )

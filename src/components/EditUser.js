@@ -58,33 +58,33 @@ class EditUser extends React.Component {
     console.log(user)
     console.log(this.state)
     return(
-    <div>
+      <div>
 
-    {user ?
-      <>
-      <form data-id={this.state.id} onSubmit={this.handleOnSubmit}>
-      <h2>Edit User Profile</h2>
-      <label>Name:</label>
-      <input type="text" name="name" value={this.state.name} onChange={this.handleOnChange}/>
-      <br/><br/>
-      <label>Email:</label>
-      <input type="text" name="email" value={this.state.email} onChange={this.handleOnChange}/>
-      <br/><br/>
-      <label>City:</label>
-      <input type="text" name="city" value={this.state.city} onChange={this.handleOnChange}/>
-      <br/><br/>
-      <label>State:</label>
-      <input type="text" name="state" value={this.state.state} onChange={this.handleOnChange}/>
-      <br/><br/>
-      <input type="submit" value="Submit"/>
-      </form>
+      {user ?
+        <>
+        <form data-id={this.state.id} onSubmit={this.handleOnSubmit}>
+        <h2>Edit User Profile</h2>
+        <label>Name:</label>
+        <input type="text" name="name" value={this.state.name} onChange={this.handleOnChange}/>
+        <br/><br/>
+        <label>Email:</label>
+        <input type="text" name="email" value={this.state.email} onChange={this.handleOnChange}/>
+        <br/><br/>
+        <label>City:</label>
+        <input type="text" name="city" value={this.state.city} onChange={this.handleOnChange}/>
+        <br/><br/>
+        <label>State:</label>
+        <input type="text" name="state" value={this.state.state} onChange={this.handleOnChange}/>
+        <br/><br/>
+        <input type="submit" value="Submit"/>
+        </form>
 
-    </>
-    :
-    null
+      </>
+      :
+      null
 
-    }
-    </div>
+      }
+      </div>
     )
   }
 }

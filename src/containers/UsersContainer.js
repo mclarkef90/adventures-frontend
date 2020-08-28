@@ -33,6 +33,7 @@ class UserContainer extends React.Component {
       <NavBar/>
       <br/>
       <Switch>
+
         <Route path='/new' render={(routerProps) => <NewUserForm {...routerProps} /> }/>
         <Route path='/users/:id' render={(routerProps) => <User {...routerProps} users={this.props.users} handleDelete={this.handleDelete} handleEdit={this.handleEdit}/>}/>
         <Route path='/users' render={(routerProps) => <UsersList {...routerProps} users={this.props.users}/>}/>
@@ -45,7 +46,8 @@ class UserContainer extends React.Component {
 
 const mapStateToProps = state => {
   return {
-  users: state.users
+  users: state.users,
+  activites: state.activities
   }
 }
 
