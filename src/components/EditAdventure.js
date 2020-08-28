@@ -6,6 +6,7 @@ class EditAdventure extends React.Component {
 
   constructor(props){
     super(props);
+    
     this.state={
       title: "",
       description: "",
@@ -47,6 +48,9 @@ class EditAdventure extends React.Component {
       image_url: "",
       id: ""
     })
+    this.props.history.push('/adventures')
+
+
   }
 
 

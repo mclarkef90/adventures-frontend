@@ -48,6 +48,12 @@ export default function manageApp(state= {
           ...state, users: [...useradvUpdate, action.payload],
         }
 
+    case 'EDIT_ADVENTURE':
+      let adventuresEdit= [...state.adventures].filter(adventure => adventure.id !== action.payload.id)
+        return {
+          ...state, adventures: [...adventuresEdit, action.payload],
+        }
+
     default:
       return state
   }

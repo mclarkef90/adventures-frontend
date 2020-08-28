@@ -2,6 +2,8 @@ import React from 'react'
 import {Link, Redirect, Route, Switch} from 'react-router-dom'
 import AdventuresList from './AdventuresList';
 import CommentsList from './CommentsList';
+import EditUser0 from './EditUser0';
+
 
 
 
@@ -26,7 +28,7 @@ const User = (props) => {
     <p>Email: {user.email}</p>
     <p>Location: {user.city}, {user.state} </p>
 
-    <Link to={`/edit/${user.id}`}>Edit User Profile</Link><br/>
+    <Link to={`/users/${user.id}/edit`}>Edit User Profile</Link><br/>
 
 
 
@@ -35,10 +37,18 @@ const User = (props) => {
     <Link to={`/users/${user.id}/adventures/new`}>Add New Adventure</Link><br/>
 
     <AdventuresList adventures={user.adventures}/>
-
     <CommentsList comments={user.comments}/>
 
-    
+    <Switch>
+
+    <Route path="/users/:id/edit" render={(routerProps) => <EditUser0 {...routerProps} user={user}/>}/>
+    <Route path="/users/:id/comments" render={() => <CommentsList comments={user.comments}/>}/>
+
+
+
+    </Switch>
+
+
 
 
     </>
