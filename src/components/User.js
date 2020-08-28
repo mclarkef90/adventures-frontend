@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link, Redirect, Route} from 'react-router-dom'
+import {Link, Redirect, Route, Switch} from 'react-router-dom'
 import EditUser from './EditUser';
 
 const User = (props) => {
@@ -19,19 +19,23 @@ const User = (props) => {
 
     <h3>Profile</h3>
 
-    <EditUser user={user}/><br/>
-    <Link to={`/edit/${user.id}`}>Edit</Link>
-    <nbsp/> <button onClick={(id) => props.handleDelete(user.id)} >Delete</button>
     <p>Name: {user.name} </p>
     <p>Email: {user.email}</p>
     <p>Location: {user.city}, {user.state} </p>
-    <p>Adventures</p>
 
-    {user.adventures.map(adventure => <ul>{adventure.title} - Edit | Delete</ul>)}
+    <Link to={`/edit/${user.id}`}>Edit</Link>
 
-    <p>Comments</p>
+    <button onClick={(id) => props.handleDelete(user.id)} >Delete</button>
 
-    {user.comments.map(comment => <ul>{comment.text} - Edit | Delete</ul>)}
+
+
+
+    <Route path='/test' render={() => <h3>Adventures</h3> } />
+    <Route path='/comments' render={() => <p>Comments</p>
+    }/>
+
+
+
 
     </>
     :

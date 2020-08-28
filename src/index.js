@@ -18,13 +18,13 @@ let store= createStore(manageApp, composeEnhancers(applyMiddleware(thunk)))
 
 
 ReactDOM.render(
-  <BrowserRouter>
+
   <Provider store={store}>
-  <React.StrictMode>
+    <BrowserRouter>
     <MyApp />
-  </React.StrictMode>
+    </BrowserRouter>
   </Provider>
-  </BrowserRouter>,
+  ,
   document.getElementById('root')
 );
 

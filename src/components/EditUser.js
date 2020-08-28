@@ -6,13 +6,14 @@ class EditUser extends React.Component {
 
   constructor(props){
     super(props)
-    console.log(props.user)
+
+    console.log(props)
     this.state={
-      name: props.user.name,
-      email: props.user.email,
-      city: props.user.city,
-      state: props.user.state,
-      id: props.user.id
+      name: "",
+      email: "",
+      city: "",
+      state: "",
+      id: ""
     }
     console.log(this.state)
   }
@@ -39,10 +40,28 @@ class EditUser extends React.Component {
     //need to redirect
   }
 
+  componentDidMount(){
+    const user = this.props.users.filter(user => user.id == this.props.match.params.id)[0]
+    console.log(user.name)
+    this.setState({
+      name: user.name,
+      email: user.email,
+      city: user.city,
+      state: user.state,
+      id: user.id
+    })
+  }
+
 
   render(){
+    let user = this.props.users.filter(user => user.id == this.props.match.params.id)[0]
+    console.log(user)
+    console.log(this.state)
     return(
     <div>
+
+    {user ?
+      <>
       <form data-id={this.state.id} onSubmit={this.handleOnSubmit}>
       <h2>Edit User Profile</h2>
       <label>Name:</label>
@@ -59,6 +78,12 @@ class EditUser extends React.Component {
       <br/><br/>
       <input type="submit" value="Submit"/>
       </form>
+
+    </>
+    :
+    null
+
+    }
     </div>
     )
   }
