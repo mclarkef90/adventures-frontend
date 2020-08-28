@@ -29,7 +29,7 @@ class AdventuresContainer extends React.Component {
       <Switch>
         <Route path='/users/:id/adventures/new' render={(routerProps) => <NewAdventure {...routerProps} />}/>
         <Route path='/adventures/:id/edit' render={(routerProps) => <EditAdventure {...routerProps} adventures={this.props.adventures} /> } />
-        <Route path='/adventures/:id' render={(routerProps) => <Adventure {...routerProps} adventures={this.props.adventures} likeHandler={this.likeHandler}/>}/>
+        <Route path='/adventures/:id' render={(routerProps) => <Adventure {...routerProps} likeHandler={this.likeHandler}/>}/>
       </Switch>
       </div>
     )

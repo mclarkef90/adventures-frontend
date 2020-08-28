@@ -54,6 +54,18 @@ export default function manageApp(state= {
           ...state, adventures: [...adventuresEdit, action.payload],
         }
 
+    case 'DELETE_ADVENTURE':
+      let adventuresDelete= [...state.adventures].filter(adventure => adventure.id !== action.payload)
+        return {
+          ...state, adventures: [...adventuresDelete]
+        }
+
+    case 'CREATE_COMMENT':
+      let adventuresUpdate= [...state.adventures].filter(adventure => adventure.id !== action.payload.id)
+        return {
+          ...state, adventures: [...adventuresUpdate, action.payload]
+        }
+
     default:
       return state
   }

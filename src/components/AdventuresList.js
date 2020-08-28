@@ -2,27 +2,57 @@ import React from 'react';
 import {Route, Link, Switch} from 'react-router-dom';
 import Adventure from './Adventure'
 import EditAdventure0 from './EditAdventure0'
+import {connect} from 'react-redux'
+import {deleteAdventure} from '../actions/deleteAdventure'
 
 
-export default function AdventuresList(props){
-  return(
-    <div>
-    {console.log(props)}
-    <h2> Adventures </h2>
-    {console.log(props)}
+class AdventuresList extends React.Component {
 
-    {props.adventures.map(adventure => <span key={adventure.id}> <Link to={`/adventures/${adventure.id}`}>{adventure.title}  </Link> <br/>
-    <Link to={`/users/${adventure.user_id}/adventures/${adventure.id}/edit`}> Edit Adventure </Link> <br/><br/>
+  handleDelete =(event) => {
+    let id= parseInt(event.target.dataset.id)
 
-    <Switch>
-    <Route path="/users/:id/adventures/:adventure_id/edit" render={(routerProps) => <EditAdventure0 {...routerProps} adventure={adventure}/>} />
+    this.props.boundDeleteAdventures(id)
+  }
 
-    </Switch>
+  render(){
+    console.log(this.props)
 
-   </span>)}
+    return(
+      <div>
+      <h2> Adventures </h2>
+
+      {this.props.userAdventures.map(adventure =>
+        <>
+        <Link to={`/adventures/${adventure.id}`}>{adventure.title}  </Link> <br/>
+        <Link to={`/users/${adventure.user_id}/adventures/${adventure.id}/edit`}> Edit Adventure </Link> <br/><br/>
+        <button data-id={adventure.id} onClick={this.handleDelete}> Delete Adventure </button> <br/><br/>
+
+
+      <Switch>
+      <Route path="/users/:id/adventures/:adventure_id/edit" render={(routerProps) => <EditAdventure0 {...routerProps} adventure={adventure}/>} />
+
+
+      </Switch>
+
+     </>)}
 
 
 
-    </div>
-      )
-    }
+      </div>
+
+    )
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+  users: state.users,
+  adventures: state.adventures
+  }
+}
+
+function mapDispatchToProps(dispatch){
+  return {boundDeleteAdventures: (id) => dispatch(deleteAdventure(id))
+}}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AdventuresList)

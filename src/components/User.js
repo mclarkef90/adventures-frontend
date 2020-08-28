@@ -34,9 +34,9 @@ const User = (props) => {
 
     <button onClick={(id) => props.handleDelete(user.id)} >Delete User Profile</button><br/>
 
-    <Link to={`/users/${user.id}/adventures/new`}>Add New Adventure</Link><br/>
+    <Link to={`/users/${user.id}/adventures/new`}>Add New Adventure</Link><br/><br/><br/>
 
-    <AdventuresList adventures={user.adventures}/>
+    <AdventuresList userAdventures={user.adventures}/>
     <CommentsList comments={user.comments}/>
 
     <Switch>
