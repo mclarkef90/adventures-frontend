@@ -19,29 +19,34 @@ export default function manageApp(state= {
 
     case 'ADD_LIKE':
       let likesUpdate= [...state.adventures].filter(adventure => adventure.id !== action.payload.id)
-      return {
-        ...state, adventures: [...likesUpdate, action.payload],
-      }
+        return {
+          ...state, adventures: [...likesUpdate, action.payload],
+        }
 
     case 'CREATE_USER':
       let usersUpdate= [...state.users].filter(user => user.id !== action.payload.id)
-      return {
-        ...state, users: [...usersUpdate, action.payload],
-      }
+        return {
+          ...state, users: [...usersUpdate, action.payload],
+        }
 
     case 'DELETE_USER':
       let userslist= [...state.users].filter(user => user.id !== action.payload)
-      return {
-        ...state, users: [...userslist]
-      }
+        return {
+          ...state, users: [...userslist]
+        }
 
     case 'EDIT_USER':
     let usersEdit= [...state.users].filter(user => user.id !== action.payload.id)
     console.log(action.payload)
-
       return {
         ...state, users: [...usersEdit, action.payload]
       }
+
+    case 'CREATE_ADVENTURE':
+      let useradvUpdate= [...state.users].filter(user => user.id !== action.payload.id)
+        return {
+          ...state, users: [...useradvUpdate, action.payload],
+        }
 
     default:
       return state

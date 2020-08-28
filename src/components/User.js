@@ -26,9 +26,13 @@ const User = (props) => {
     <p>Email: {user.email}</p>
     <p>Location: {user.city}, {user.state} </p>
 
-    <Link to={`/edit/${user.id}`}>Edit</Link>
+    <Link to={`/edit/${user.id}`}>Edit User Profile</Link><br/>
 
-    <button onClick={(id) => props.handleDelete(user.id)} >Delete</button>
+
+
+    <button onClick={(id) => props.handleDelete(user.id)} >Delete User Profile</button><br/>
+    
+    <Link to={`/users/${user.id}/adventures/new`}>Add New Adventure</Link><br/>
 
     <AdventuresList adventures={user.adventures}/>
     <CommentsList comments={user.comments}/>

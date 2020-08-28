@@ -26,7 +26,8 @@ class AdventuresContainer extends React.Component {
       <div>
       <br/>
       <Switch>
-        <Route exact path='/adventures/:id' render={(routerProps) => <Adventure {...routerProps} adventures={this.props.adventures} likeHandler={this.likeHandler}/>}/>
+        <Route path='/users/:id/adventures/new' render={(routerProps) => <NewAdventure {...routerProps} />}/>
+        <Route path='/adventures/:id' render={(routerProps) => <Adventure {...routerProps} adventures={this.props.adventures} likeHandler={this.likeHandler}/>}/>
       </Switch>
       </div>
     )
