@@ -3,12 +3,12 @@ import {Route, Link} from 'react-router-dom';
 import Adventure from './Adventure'
 
 
-export default function AdventuresList(props){
+export default function CommentsList(props){
   return(
     <div>
-    <h2> Adventures </h2>
+    <h2> Comments </h2>
     {console.log(props)}
-    {props.adventures.map(adventure => <span key={adventure.id}> <Link to={`/adventures/${adventure.id}`}>{adventure.title}</Link>
+    {props.comments.map(comment => <span key={comment.id}> {comment.text}
     <br/><br/>
    </span>
      )}

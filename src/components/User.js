@@ -1,6 +1,9 @@
 import React from 'react'
 import {Link, Redirect, Route, Switch} from 'react-router-dom'
-import EditUser from './EditUser';
+import AdventuresList from './AdventuresList';
+import CommentsList from './CommentsList';
+
+
 
 const User = (props) => {
 
@@ -27,14 +30,8 @@ const User = (props) => {
 
     <button onClick={(id) => props.handleDelete(user.id)} >Delete</button>
 
-
-
-
-    <Route path='/test' render={() => <h3>Adventures</h3> } />
-    <Route path='/comments' render={() => <p>Comments</p>
-    }/>
-
-
+    <AdventuresList adventures={user.adventures}/>
+    <CommentsList comments={user.comments}/>
 
 
     </>

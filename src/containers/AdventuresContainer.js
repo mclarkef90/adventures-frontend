@@ -27,7 +27,6 @@ class AdventuresContainer extends React.Component {
       <br/>
       <Switch>
         <Route exact path='/adventures/:id' render={(routerProps) => <Adventure {...routerProps} adventures={this.props.adventures} likeHandler={this.likeHandler}/>}/>
-        <Route exact path='/adventures' render={(routerProps) => <AdventuresList {...routerProps} adventures={this.props.adventures}/>}/>
       </Switch>
       </div>
     )
