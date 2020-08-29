@@ -13,7 +13,9 @@ class Adventure extends React.Component {
 
   handleDelete =(event) => {
     let id= parseInt(event.target.dataset.id)
+    let user= parseInt(event.target.dataset.user)
     this.props.boundDeleteAdventures(id)
+    this.props.history.goForward(`users/${user}`)
   }
 
   render(){
@@ -33,7 +35,7 @@ class Adventure extends React.Component {
           <a href={adventure.website_url}>Learn More</a><br/><br/>
           <button onClick={() => this.props.history.goBack()}>Close</button>{'  '}
           <button onClick={() => this.props.history.push(`/users/${adventure.user_id}/adventures/${adventure.id}/edit`)}> Edit Adventure </button> {'  '}
-          <button data-id={adventure.id} onClick={this.handleDelete}> Delete Adventure </button> <br/><br/>
+          <button data-user={adventure.user_id} data-id={adventure.id} onClick={this.handleDelete}> Delete Adventure </button> <br/><br/>
         </>
         :
         null}

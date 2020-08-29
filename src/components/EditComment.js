@@ -44,7 +44,7 @@ class EditComment extends React.Component {
       id: "",
       user: ""
     })
-    this.props.history.push(`users/${user}`)
+    this.props.history.goForward(`users/${user}`)
 }
 
   handleDelete = (event) => {

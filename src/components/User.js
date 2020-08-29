@@ -56,10 +56,10 @@ class User extends React.Component {
           <button data-id={user.id} onClick={this.addAdventure}>Add Adventure</button>
 
           <Switch>
-          <Route path="/users/:id/comments/:comment_id/edit" render={(routerProps) => <EditComment {...routerProps}/>} />
-          <Route path="/users/:id/adventures/:adventure_id/edit" render={(routerProps) => <EditAdventure {...routerProps} />} />
-          <Route path="/users/:id/adventures/:adventure_id" render={(routerProps) => <Adventure {...routerProps} />}/>
           <Route path="/users/:id/adventures/new" render= {(routerProps) => <NewAdventure {...routerProps} user={user}/> } />
+          <Route path="/users/:id/adventures/:adventure_id/edit" render={(routerProps) => <EditAdventure {...routerProps} />} />
+          <Route path="/users/:id/comments/:comment_id/edit" render={(routerProps) => <EditComment {...routerProps}/>} />
+          <Route path="/users/:id/adventures/:adventure_id" render={(routerProps) => <Adventure {...routerProps} />}/>
           <Route path="/users/:id/edit" render={(routerProps) => <EditUser {...routerProps} user={user}/>}/>
           <Route path="/users/:id/comments" render={() => <CommentsList comments={user.comments} adventures={this.props.adventures}/>}/>
           </Switch>
