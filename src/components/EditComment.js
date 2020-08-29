@@ -50,9 +50,10 @@ class EditComment extends React.Component {
   handleDelete = (event) => {
     event.persist();
     let id= event.target.dataset.id
+    let user= parseInt(this.state.user)
     console.log(id)
     this.props.boundDeleteComment(id)
-    this.props.history.push('users/')
+    this.props.history.goForward(`users/${user}`)
 
   }
 

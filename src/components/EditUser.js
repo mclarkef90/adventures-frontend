@@ -79,9 +79,9 @@ class EditUser extends React.Component {
         <label>State:</label>
         <input type="text" name="state" value={this.state.state} onChange={this.handleOnChange}/>
         <br/><br/>
-        <input type="submit" value="Submit"/>
-        </form>
+        <input type="submit" value="Submit"/>{'  '}<button onClick={() => this.props.history.goBack()}>Cancel</button>
 
+        </form>
       </>
       }
       </div>

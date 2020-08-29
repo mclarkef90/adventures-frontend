@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import Adventure from '../components/Adventure';
 import NewAdventure from '../components/NewAdventure';
 import { fetchAdventures } from '../actions/fetchAdventures.js';
 import { addLike } from '../actions/addLike.js';
 import {Route, Switch} from 'react-router-dom';
+import AdventureSearch from '../components/AdventureSearch'
 
 class AdventuresContainer extends React.Component {
 
@@ -25,8 +25,7 @@ class AdventuresContainer extends React.Component {
       <div>
       <br/>
       <Switch>
-        <Route path='/users/:id/adventures/new' render={(routerProps) => <NewAdventure {...routerProps} />}/>
-        <Route path='/adventures/:id' render={(routerProps) => <Adventure {...routerProps} likeHandler={this.likeHandler}/>}/>
+        <Route path='/adventures' component={AdventureSearch} />
       </Switch>
       </div>
     )

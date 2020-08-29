@@ -6,6 +6,7 @@ import NewUserForm from './components/NewUserForm';
 import UsersContainer from './containers/UsersContainer'
 import AdventuresContainer from './containers/AdventuresContainer'
 
+
 export default class App extends React.Component {
 
   render(){
@@ -13,11 +14,10 @@ export default class App extends React.Component {
       <div>
 
       <NavBar/>
-
+      <AdventuresContainer />
       <Switch>
       <Route path='/users/new' component={NewUserForm} />
       <UsersContainer />
-      <AdventuresContainer />
       </Switch>
 
       </div>
