@@ -1,5 +1,5 @@
 import React from 'react'
-import {NavLink, Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 
 
 const link = {
@@ -25,7 +25,7 @@ const NavBar = () => {
     </NavLink>
 
     <NavLink
-      to="/new"
+      to="/users/new"
       exact
       style={link}
       activeStyle={{

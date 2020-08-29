@@ -1,4 +1,3 @@
-import React from 'react'
 
 export function createUser({name, email, city, state}) {
 

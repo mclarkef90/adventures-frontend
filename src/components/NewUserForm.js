@@ -1,16 +1,22 @@
 import React from 'react'
-import { createUser } from '../actions/createUser'
 import { connect } from 'react-redux';
+import {Redirect} from 'react-router-dom'
+
+
+
+import { createUser } from '../actions/createUser'
+
 
 class NewUserForm extends React.Component {
 
   constructor(props){
     super(props);
+    console.log(this.props)
     this.state={
       name: "",
       email: "",
       city: "",
-      stateAbrev: ""
+      state: ""
     }
   }
 
@@ -29,7 +35,7 @@ class NewUserForm extends React.Component {
       email: "",
       city: "",
       state: ""
-    })
+    });
     this.props.history.push('/users')
   }
 
@@ -57,13 +63,7 @@ class NewUserForm extends React.Component {
       </div>
     )
   }
-
 }
 
-// const mapStateToProps = state => {
-//   return {
-//   users: state.users
-//   }
-// }
 
 export default connect(null, {createUser})(NewUserForm)

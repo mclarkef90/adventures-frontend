@@ -1,4 +1,3 @@
-import React from 'react'
 
 export function editComment({text, id, adventure_id}) {
   return (dispatch) => {
