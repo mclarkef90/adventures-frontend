@@ -6,12 +6,13 @@ class EditUser extends React.Component {
 
   constructor(props){
     super(props)
+    console.log(props)
     this.state={
-      name: "",
-      email: "",
-      city: "",
-      state: "",
-      id: ""
+      name: props.user.name,
+      email: props.user.email,
+      city: props.user.city,
+      state: props.user.state,
+      id: props.user.id
     }
     console.log(this.state)
   }
@@ -35,27 +36,27 @@ class EditUser extends React.Component {
       city: "",
       state: ""
     })
-    //need to redirect
+    this.props.history.push(`/users/${id}`)
   }
 
-  shouldComponentUpdate(nextProps, nextState){
-    return (this.props.users.length !== nextProps.users.length || nextState.name !== this.state.name)
-  }
-
-  componentDidUpdate(){
-    const user = this.props.users.filter(user => user.id == this.props.match.params.id)[0]
-    console.log(user.name)
-    if (user){
-      this.setState({
-        name: user.name,
-        email: user.email,
-        city: user.city,
-        state: user.state,
-        id: user.id
-      })
-    }
-
-  }
+  // shouldComponentUpdate(nextProps, nextState){
+  //   return (this.props.users.length !== nextProps.users.length || nextState.name !== this.state.name)
+  // }
+  //
+  // componentDidUpdate(){
+  //   const user = this.props.users.filter(user => user.id == this.props.match.params.id)[0]
+  //   console.log(user.name)
+  //   if (user){
+  //     this.setState({
+  //       name: user.name,
+  //       email: user.email,
+  //       city: user.city,
+  //       state: user.state,
+  //       id: user.id
+  //     })
+  //   }
+  //
+  // }
 
 
   render(){

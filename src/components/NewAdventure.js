@@ -11,7 +11,7 @@ class NewAdventure extends React.Component {
       description: "",
       website_url: "",
       image_url: "",
-      user_id: props.match.params.id
+      user_id: props.user.id
     }
   }
 
@@ -33,6 +33,7 @@ class NewAdventure extends React.Component {
       image_url: "",
       user_id: ""
     })
+    this.props.history.push(`/users/${this.state.user_id}`)
   }
 
   render() {
@@ -54,8 +55,7 @@ class NewAdventure extends React.Component {
         <label>Image URL:</label>
         <input type="text" name="image_url" value={this.state.image_url} onChange={this.handleOnChange}/>
         <br/><br/>
-        <input type="hidden" name="user_id" value={this.props.match.params.id} onChange={this.handleOnChange}/>
-        <br/><br/>
+
         <input type="submit" value="Submit"/>
         </form>
       </div>

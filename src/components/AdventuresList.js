@@ -10,49 +10,31 @@ class AdventuresList extends React.Component {
 
   handleDelete =(event) => {
     let id= parseInt(event.target.dataset.id)
-
     this.props.boundDeleteAdventures(id)
   }
 
   render(){
-    console.log(this.props)
-
     return(
       <div>
-      <h2> Adventures </h2>
-
-      {this.props.userAdventures.map(adventure =>
-        <>
-        <Link to={`/adventures/${adventure.id}`}>{adventure.title}  </Link> <br/>
-        <Link to={`/users/${adventure.user_id}/adventures/${adventure.id}/edit`}> Edit Adventure </Link> <br/><br/>
-        <button data-id={adventure.id} onClick={this.handleDelete}> Delete Adventure </button> <br/><br/>
-
-
-      <Switch>
-      <Route path="/users/:id/adventures/:adventure_id/edit" render={(routerProps) => <EditAdventure0 {...routerProps} adventure={adventure}/>} />
-
-
-      </Switch>
-
-     </>)}
-
-
-
+        <h2> Adventures </h2>
+          {this.props.userAdventures.map(adventure =>
+            <ul key={adventure.id}>
+              <Link to={`/adventures/${adventure.id}`}>{adventure.title}</Link> <br/>
+              <Link to={`/users/${adventure.user_id}/adventures/${adventure.id}/edit`}> Edit Adventure </Link> <br/><br/>
+              <button data-id={adventure.id} onClick={this.handleDelete}> Delete Adventure </button> <br/><br/>
+              <Switch>
+                <Route path="/users/:id/adventures/:adventure_id/edit" render={(routerProps) => <EditAdventure0 {...routerProps} adventure={adventure}/>} />
+              </Switch>
+            </ul>)}
       </div>
-
-    )
+      )
+    }
   }
-}
 
-const mapStateToProps = state => {
-  return {
-  users: state.users,
-  adventures: state.adventures
-  }
-}
+
 
 function mapDispatchToProps(dispatch){
   return {boundDeleteAdventures: (id) => dispatch(deleteAdventure(id))
 }}
 
-export default connect(mapStateToProps, mapDispatchToProps)(AdventuresList)
+export default connect(null, mapDispatchToProps)(AdventuresList)

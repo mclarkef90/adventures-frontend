@@ -1,31 +1,38 @@
 import React from 'react';
-import {Route, Link} from 'react-router-dom';
-import User from './User';
-import UserCard from './UserCard';
-import EditUser from './EditUser';
+import {connect} from 'react-redux'
 
-export default function UsersList(props) {
-  let list= props.users.map(user => <><h1>{user.name}</h1><Link to={`/users/${user.id}`}>Profile</Link>
- </>)
+class UsersList extends React.Component {
 
+  constructor(props) {
+    super(props)
+    console.log(this.props)
+  }
 
-  return(
-    <div>
-    {list}
-    </div>
-  )
+  showUser = (event) => {
+    event.persist()
+    console.log(event)
+    let id= parseInt(event.target.dataset.id)
+    this.props.history.push(`/users/${id}`)
+  }
+
+  render(){
+    return(
+      <div>
+      {this.props.users.map(user =>
+        <ul key={user.id}>
+        <h1>{user.name}</h1>
+        <button data-id={user.id} onClick={this.showUser}>Profile</button>
+        </ul>
+        )}
+      </div>
+      )
+    }
 }
 
-  // return (
-  //
-  //   <div>
-  //   {props.users.map(user => <span key={user.id}>
-  //
-  //
-  //     <Link to={`/users/${user.id}`}>{user.name}</Link>
-  //   <br/><br/>
-  //  </span>
-  //    )}
-  //   </div>
-  //     )
-  //   }
+const mapStateToProps = state => {
+  return {
+  users: state.users,
+  }
+}
+
+export default connect(mapStateToProps)(UsersList)

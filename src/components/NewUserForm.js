@@ -1,8 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import {Redirect} from 'react-router-dom'
-
-
 
 import { createUser } from '../actions/createUser'
 
@@ -11,7 +8,6 @@ class NewUserForm extends React.Component {
 
   constructor(props){
     super(props);
-    console.log(this.props)
     this.state={
       name: "",
       email: "",
@@ -28,7 +24,6 @@ class NewUserForm extends React.Component {
 
   handleOnSubmit = event => {
     event.preventDefault();
-    console.log(this.props)
     this.props.createUser(this.state)
     this.setState({
       name: "",
@@ -40,7 +35,6 @@ class NewUserForm extends React.Component {
   }
 
   render() {
-    console.log(this.props)
 
     return(
       <div>

@@ -1,5 +1,5 @@
 
-export function deleteUser(id) {
+export default function deleteUser(id) {
   return (dispatch) => {
     fetch(`http://localhost:3000/api/v1/users/${id}`, {
       method: "DELETE",

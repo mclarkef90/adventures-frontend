@@ -56,7 +56,7 @@ class EditAdventure0 extends React.Component {
 
 
   render() {
-    
+
     return(
       <div>
 
@@ -76,7 +76,7 @@ class EditAdventure0 extends React.Component {
         <br/><br/>
         <input type="submit" value="Submit"/>
         </form>
-
+        <button onClick={() => this.props.history.goBack()}>Cancel</button>
 
       </div>
     )
