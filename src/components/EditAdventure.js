@@ -19,7 +19,8 @@ class EditAdventure extends React.Component {
       description: adventure.description,
       website_url: adventure.website_url,
       image_url: adventure.image_url,
-      id: adventure.id
+      id: adventure.id,
+      user_id: adventure.user_id
     }
   }
 
@@ -31,17 +32,17 @@ class EditAdventure extends React.Component {
 
     handleOnSubmit = event => {
       event.preventDefault();
-      console.log(this.state)
+      let user_id= this.state.user_id;
+    
       this.props.boundeditAdventure(this.state)
       console.log(this.state)
       this.setState({
         title: "",
         description: "",
         website_url: "",
-        image_url: "",
-        id: ""
+        image_url: ""
       })
-      this.props.history.push('/adventures')
+      this.props.history.push(`users/${user_id}`)
     }
 
   render() {
