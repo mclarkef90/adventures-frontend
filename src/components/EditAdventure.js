@@ -33,7 +33,6 @@ class EditAdventure extends React.Component {
     handleOnSubmit = event => {
       event.preventDefault();
       let user_id= this.state.user_id;
-    
       this.props.boundeditAdventure(this.state)
       console.log(this.state)
       this.setState({
