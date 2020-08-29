@@ -2,6 +2,8 @@ import React from 'react'
 import {Link, Switch, Redirect, Route} from 'react-router-dom'
 import {connect} from 'react-redux'
 import NewComment from './NewComment'
+import {deleteAdventure} from '../actions/deleteAdventure'
+
 
 class Adventure extends React.Component {
 
@@ -9,6 +11,11 @@ class Adventure extends React.Component {
     super(props)
     console.log(this.props)
 
+  }
+
+  handleDelete =(event) => {
+    let id= parseInt(event.target.dataset.id)
+    this.props.boundDeleteAdventures(id)
   }
 
   render(){
@@ -22,9 +29,10 @@ class Adventure extends React.Component {
       <h2>{adventure.title}, by: name </h2>
       <img src= {adventure.image_url}/>
       <p>{adventure.description} </p>
-      <a href={adventure.website_url}>Learn More</a><br/>
-      <button onClick={() => this.props.history.goBack()}>Close</button>
-      <Link to={`/users/${adventure.user_id}/adventures/${adventure.id}/edit`}> Edit Adventure </Link> <br/><br/>
+      <a href={adventure.website_url}>Learn More</a><br/><br/>
+      <button onClick={() => this.props.history.goBack()}>Close</button>{'  '}
+      <button onClick={() => this.props.history.push(`/users/${adventure.user_id}/adventures/${adventure.id}/edit`)}> Edit Adventure </button> {'  '}
+      <button data-id={adventure.id} onClick={this.handleDelete}> Delete Adventure </button> <br/><br/>
 
 
 
@@ -37,6 +45,10 @@ class Adventure extends React.Component {
     adventures: state.adventures
     }
   }
+
+  function mapDispatchToProps(dispatch){
+    return {boundDeleteAdventures: (id) => dispatch(deleteAdventure(id))
+  }}
 
 
   export default connect(mapStateToProps)(Adventure)
