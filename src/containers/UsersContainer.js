@@ -7,11 +7,14 @@ import User from '../components/User';
 import EditUser from '../components/EditUser';
 
 import { fetchUsers } from '../actions/fetchUsers.js';
+import { fetchAdventures } from '../actions/fetchAdventures.js';
+
 
 class UserContainer extends React.Component {
 
   componentDidMount(){
     this.props.fetchUsers()
+    this.props.fetchAdventures()
   }
 
   render(){
@@ -37,4 +40,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {fetchUsers})(UserContainer)
+export default connect(mapStateToProps, {fetchUsers, fetchAdventures})(UserContainer)

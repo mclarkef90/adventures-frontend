@@ -1,11 +1,13 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {Link, Redirect, Route, Switch} from 'react-router-dom'
+import {Route, Switch} from 'react-router-dom'
 import AdventuresList from './AdventuresList';
 import CommentsList from './CommentsList';
 import EditUser from './EditUser';
 import deleteUser from '../actions/deleteUser'
 import NewAdventure from './NewAdventure'
+import EditAdventure from './EditAdventure'
+import Adventure from './Adventure'
 
 class User extends React.Component {
   constructor(props){
@@ -52,12 +54,14 @@ class User extends React.Component {
           <button data-id={user.id} onClick={this.addAdventure}>Add Adventure</button>
 
           <Switch>
+          <Route path="/users/:id/adventures/:adventure_id/edit" render={(routerProps) => <EditAdventure {...routerProps} />} />
+          <Route path="/users/:id/adventures/:adventure_id" render={(routerProps) => <Adventure {...routerProps} />}/>
           <Route path="/users/:id/adventures/new" render= {(routerProps) => <NewAdventure {...routerProps} user={user}/> } />
           <Route path="/users/:id/edit" render={(routerProps) => <EditUser {...routerProps} user={user}/>}/>
           <Route path="/users/:id/comments" render={() => <CommentsList comments={user.comments} adventures={this.props.adventures}/>}/>
           </Switch>
 
-          <AdventuresList userAdventures={user.adventures}/>
+          <AdventuresList userAdventures={user.adventures} user={user}/>
           <CommentsList comments={user.comments}/>
 
 
@@ -73,6 +77,7 @@ class User extends React.Component {
 const mapStateToProps = state => {
   return {
   users: state.users,
+  adventures: state.adventures,
   }
 }
 

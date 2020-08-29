@@ -32,6 +32,7 @@ class UsersList extends React.Component {
 const mapStateToProps = state => {
   return {
   users: state.users,
+  adventures: state.adventures
   }
 }
 
