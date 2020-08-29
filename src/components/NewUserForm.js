@@ -1,6 +1,8 @@
 import React from 'react'
-import { createUser } from '../actions/createUser'
 import { connect } from 'react-redux';
+
+import { createUser } from '../actions/createUser'
+
 
 class NewUserForm extends React.Component {
 
@@ -10,7 +12,7 @@ class NewUserForm extends React.Component {
       name: "",
       email: "",
       city: "",
-      stateAbrev: ""
+      state: ""
     }
   }
 
@@ -22,19 +24,17 @@ class NewUserForm extends React.Component {
 
   handleOnSubmit = event => {
     event.preventDefault();
-    console.log(this.props)
     this.props.createUser(this.state)
     this.setState({
       name: "",
       email: "",
       city: "",
       state: ""
-    })
+    });
     this.props.history.push('/users')
   }
 
   render() {
-    console.log(this.props)
 
     return(
       <div>
@@ -57,13 +57,7 @@ class NewUserForm extends React.Component {
       </div>
     )
   }
-
 }
 
-// const mapStateToProps = state => {
-//   return {
-//   users: state.users
-//   }
-// }
 
 export default connect(null, {createUser})(NewUserForm)

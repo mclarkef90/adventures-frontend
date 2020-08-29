@@ -1,4 +1,3 @@
-import React from 'react'
 
 export function editAdventure({title, description, website_url, image_url, id}) {
   return (dispatch) => {

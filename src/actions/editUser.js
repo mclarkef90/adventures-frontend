@@ -1,4 +1,3 @@
-import React from 'react'
 
 export function editUser(id, {name, email, city, state}) {
   return (dispatch) => {

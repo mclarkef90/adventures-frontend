@@ -6,64 +6,47 @@ class EditAdventure extends React.Component {
 
   constructor(props){
     super(props);
-    
-    this.state={
-      title: "",
-      description: "",
-      website_url: "",
-      image_url: "",
-      id: ""
-    }
-  }
+    console.log(this.props);
+    let id= this.props.match.params.id
+    let aId= this.props.match.params.adventure_id
+    let adventure= this.props.adventures.filter(adventure => adventure.id == aId)[0]
+    console.log(adventure)
+    console.log(id, aId)
 
-  componentDidMount(){
-    console.log(this.props)
-    let adventure = this.props.adventures.filter(adventure => adventure.id == this.props.match.params.id)[0]
-    console.log(adventure.title)
-    this.setState({
+
+    this.state={
       title: adventure.title,
       description: adventure.description,
       website_url: adventure.website_url,
       image_url: adventure.image_url,
-      id: adventure.id
-    })
-
+      id: adventure.id,
+      user_id: adventure.user_id
+    }
   }
 
-  handleOnChange = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    })
-  }
+    handleOnChange = event => {
+      this.setState({
+        [event.target.name]: event.target.value
+      })
+    }
 
-  handleOnSubmit = event => {
-    event.preventDefault();
-    console.log(this.state)
-    this.props.boundeditAdventure(this.state)
-    console.log(this.state)
-    this.setState({
-      title: "",
-      description: "",
-      website_url: "",
-      image_url: "",
-      id: ""
-    })
-    this.props.history.push('/adventures')
-
-
-  }
-
-
+    handleOnSubmit = event => {
+      event.preventDefault();
+      let user_id= this.state.user_id;
+      this.props.boundeditAdventure(this.state)
+      console.log(this.state)
+      this.setState({
+        title: "",
+        description: "",
+        website_url: "",
+        image_url: ""
+      })
+        this.props.history.push(`users/${user_id}`)
+    }
 
   render() {
-    let adventure = this.props.adventures.filter(adventure => adventure.id == this.props.match.params.id)[0]
-    console.log(adventure)
-    console.log(this.props.adventures)
     return(
       <div>
-      {adventure ?
-        <>
-
         <form onSubmit={this.handleOnSubmit}>
         <h1>Edit Adventure </h1>
         <label>Title:</label>
@@ -80,18 +63,22 @@ class EditAdventure extends React.Component {
         <br/><br/>
         <input type="submit" value="Submit"/>
         </form>
-        </>
-        :
-        null}
+        <button onClick={() => this.props.history.goBack()}>Cancel</button>
       </div>
-    )
+      )
+    }
+  }
+
+function mapStateToProps(state){
+  return {
+    users: state.users,
+    adventures: state.adventures
   }
 }
-
 
 function mapDispatchToProps(dispatch) {
   return { boundeditAdventure: (userEntry) => dispatch(editAdventure(userEntry))
 }}
 
 
-export default connect(null, mapDispatchToProps)(EditAdventure)
+export default connect(mapStateToProps, mapDispatchToProps)(EditAdventure)

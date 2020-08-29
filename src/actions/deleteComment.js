@@ -1,7 +1,6 @@
-
-export function deleteAdventure(id) {
+export function deleteComment(id) {
   return (dispatch) => {
-    fetch(`http://localhost:3000/api/v1/adventures/${id}`, {
+    fetch(`http://localhost:3000/api/v1/comments/${id}`, {
       method: "DELETE",
       headers: {
         'Content-Type': 'application/json',
@@ -9,10 +8,9 @@ export function deleteAdventure(id) {
       },
       })
     .then(response => response.json())
-    .then(adventure => {
-          dispatch({
-      type: 'DELETE_ADVENTURE',
-      payload: id})
+    .then(user => {
+          dispatch({type: 'DELETE_COMMENT',
+          payload: user})
     })
   }
 }
