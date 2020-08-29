@@ -1,13 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import AdventuresList from '../components/AdventuresList';
 import Adventure from '../components/Adventure';
 import NewAdventure from '../components/NewAdventure';
-import EditAdventure from '../components/EditAdventure';
 import { fetchAdventures } from '../actions/fetchAdventures.js';
 import { addLike } from '../actions/addLike.js';
 import {Route, Switch} from 'react-router-dom';
-import User from '../components/User'
 
 class AdventuresContainer extends React.Component {
 

@@ -1,7 +1,5 @@
 import React from 'react'
-import {Link, Switch, Redirect, Route} from 'react-router-dom'
 import {connect} from 'react-redux'
-import NewComment from './NewComment'
 import {deleteAdventure} from '../actions/deleteAdventure'
 
 
@@ -30,7 +28,7 @@ class Adventure extends React.Component {
       {adventure ?
         <>
           <h2>{adventure.title}, by: name </h2>
-          <img src= {adventure.image_url}/>
+          <img alt="activity" src= {adventure.image_url}/>
           <p>{adventure.description} </p>
           <a href={adventure.website_url}>Learn More</a><br/><br/>
           <button onClick={() => this.props.history.goBack()}>Close</button>{'  '}
