@@ -67,8 +67,10 @@ export default function manageApp(state= {
         }
 
     case 'UPDATE_COMMENT':
+      console.log(action.payload)
+      let commentsEdit= [...state.users].filter(user => user.id !== action.payload.id)
       return {
-        state
+        ...state, users: [...commentsEdit, action.payload],
       }
 
     default:

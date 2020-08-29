@@ -11,9 +11,9 @@ export function editComment({text, id, adventure_id}) {
       }
     )
     .then(response => response.json())
-    .then(comment => dispatch({
+    .then(adventure => dispatch({
       type: 'UPDATE_COMMENT',
-      payload: adventure_id
+      payload: adventure
     }))
   }
 }

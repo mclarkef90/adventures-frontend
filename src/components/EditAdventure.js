@@ -41,7 +41,7 @@ class EditAdventure extends React.Component {
         website_url: "",
         image_url: ""
       })
-      this.props.history.push(`users/${user_id}`)
+        this.props.history.push(`users/${user_id}`)
     }
 
   render() {

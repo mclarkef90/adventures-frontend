@@ -25,17 +25,20 @@ class Adventure extends React.Component {
     console.log(adventure)
     console.log(id, aId)
 
-    return(<div>
-      <h2>{adventure.title}, by: name </h2>
-      <img src= {adventure.image_url}/>
-      <p>{adventure.description} </p>
-      <a href={adventure.website_url}>Learn More</a><br/><br/>
-      <button onClick={() => this.props.history.goBack()}>Close</button>{'  '}
-      <button onClick={() => this.props.history.push(`/users/${adventure.user_id}/adventures/${adventure.id}/edit`)}> Edit Adventure </button> {'  '}
-      <button data-id={adventure.id} onClick={this.handleDelete}> Delete Adventure </button> <br/><br/>
-
-
-
+    return(
+      <div>
+      {adventure ?
+        <>
+          <h2>{adventure.title}, by: name </h2>
+          <img src= {adventure.image_url}/>
+          <p>{adventure.description} </p>
+          <a href={adventure.website_url}>Learn More</a><br/><br/>
+          <button onClick={() => this.props.history.goBack()}>Close</button>{'  '}
+          <button onClick={() => this.props.history.push(`/users/${adventure.user_id}/adventures/${adventure.id}/edit`)}> Edit Adventure </button> {'  '}
+          <button data-id={adventure.id} onClick={this.handleDelete}> Delete Adventure </button> <br/><br/>
+        </>
+        :
+        null}
       </div>)}
 }
 
@@ -51,7 +54,7 @@ class Adventure extends React.Component {
   }}
 
 
-  export default connect(mapStateToProps)(Adventure)
+  export default connect(mapStateToProps, mapDispatchToProps)(Adventure)
 
 
 // render(){

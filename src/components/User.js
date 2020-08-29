@@ -8,6 +8,8 @@ import deleteUser from '../actions/deleteUser'
 import NewAdventure from './NewAdventure'
 import EditAdventure from './EditAdventure'
 import Adventure from './Adventure'
+import EditComment from './EditComment'
+
 
 class User extends React.Component {
   constructor(props){
@@ -54,6 +56,7 @@ class User extends React.Component {
           <button data-id={user.id} onClick={this.addAdventure}>Add Adventure</button>
 
           <Switch>
+          <Route path="/users/:id/comments/:comment_id/edit" render={(routerProps) => <EditComment {...routerProps}/>} />
           <Route path="/users/:id/adventures/:adventure_id/edit" render={(routerProps) => <EditAdventure {...routerProps} />} />
           <Route path="/users/:id/adventures/:adventure_id" render={(routerProps) => <Adventure {...routerProps} />}/>
           <Route path="/users/:id/adventures/new" render= {(routerProps) => <NewAdventure {...routerProps} user={user}/> } />
