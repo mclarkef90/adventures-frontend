@@ -1,5 +1,7 @@
 import React from 'react'
 import { editComment } from '../actions/editComment'
+import { deleteComment } from '../actions/deleteComment'
+
 import { connect } from 'react-redux';
 
 class EditComment extends React.Component {
@@ -45,6 +47,15 @@ class EditComment extends React.Component {
     this.props.history.push(`users/${user}`)
 }
 
+  handleDelete = (event) => {
+    event.persist();
+    let id= event.target.dataset.id
+    console.log(id)
+    this.props.boundDeleteComment(id)
+    this.props.history.push('users/')
+
+  }
+
   render() {
     return(
       <div>
@@ -54,9 +65,10 @@ class EditComment extends React.Component {
         <input type="text" name="text" value={this.state.text} onChange={this.handleOnChange}/>
         <br/><br/>
         <input type="submit" value="Submit"/>
-        </form>
-        <button onClick={() => this.props.history.goBack()}>Cancel</button>
+        </form><br/>
+        <button onClick={() => this.props.history.goBack()}>Cancel</button>{"  "}<button data-id= {this.state.id} onClick={this.handleDelete}>Delete Comment</button>
         </div>
+
         )
       }
     }
@@ -66,8 +78,9 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return { boundeditComment: (userEntry) => dispatch(editComment(userEntry))
+  return {
+    boundeditComment: (userEntry) => dispatch(editComment(userEntry)),
+    boundDeleteComment: (id) => dispatch(deleteComment(id))
 }}
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditComment)
