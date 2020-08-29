@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import NewAdventure from '../components/NewAdventure';
 import { fetchAdventures } from '../actions/fetchAdventures.js';
-import { addLike } from '../actions/addLike.js';
+import { fetchUsers } from '../actions/fetchUsers.js';
+
 import {Route, Switch} from 'react-router-dom';
 import AdventureSearch from '../components/AdventureSearch'
 
@@ -10,14 +10,8 @@ class AdventuresContainer extends React.Component {
 
   componentDidMount(){
     this.props.fetchAdventures()
-  }
+    this.props.fetchUsers()
 
-  likeHandler = (event) => {
-    event.persist()
-    let id= parseInt(event.target.dataset.id)
-    let likes= parseInt(event.target.dataset.likes)
-    let updatedLikes= likes + 1
-    this.props.addLike(id, updatedLikes)
   }
 
   render(){
@@ -39,4 +33,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {fetchAdventures, addLike})(AdventuresContainer)
+export default connect(mapStateToProps, {fetchAdventures, fetchUsers})(AdventuresContainer)

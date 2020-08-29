@@ -30,9 +30,10 @@ class Adventure extends React.Component {
       {adventure ?
         <>
           <h2>{adventure.title}, by: name </h2>
-          <img alt="activity" src= {adventure.image_url}/>
+          <img className="image_thumbnail" alt="activity" src= {adventure.image_url}/>
           <p>{adventure.description} </p>
           <a href={adventure.website_url}>Learn More</a><br/><br/>
+
           <button onClick={() => this.props.history.goBack()}>Close</button>{'  '}
           <button onClick={() => this.props.history.push(`/users/${adventure.user_id}/adventures/${adventure.id}/edit`)}> Edit Adventure </button> {'  '}
           <button data-user={adventure.user_id} data-id={adventure.id} onClick={this.handleDelete}> Delete Adventure </button> <br/><br/>
@@ -57,23 +58,6 @@ class Adventure extends React.Component {
   export default connect(mapStateToProps, mapDispatchToProps)(Adventure)
 
 
-// render(){
-//   let adventure= this.props.adventure
-//   return (
-//
-//     <div>
-//     {adventure ?
-//       <>
-//
-// <h2>{adventure.title}, by: name </h2>
-// <img src= {adventure.image_url}/>
-// <p>{adventure.description} </p>
-// <a href={adventure.website_url}>Learn More</a>
-// <p>Like: <button data-id= {adventure.id} data-likes={adventure.likes} onClick={this.props.likeHandler}>{adventure.likes}</button> </p>
-//
-// <h3>Comments: </h3>
-// <Link to={`/adventures/${adventure.id}/comments/new`}>Add a Comment</Link>
-// {adventure.comments.map(comment => <p>{comment.text}</p>) }
 //
 //
 //     <Switch>

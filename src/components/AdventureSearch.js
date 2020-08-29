@@ -1,11 +1,13 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import { addLike } from '../actions/addLike';
+
 
 class AdventureSearch extends React.Component{
 
   constructor(props){
     super(props)
-    console.log(this.props)
+
     this.state={
       searchTerm: ""
     }
@@ -15,6 +17,14 @@ class AdventureSearch extends React.Component{
     this.setState({
       searchTerm: event.target.value
     })
+  }
+
+  likeHandler = (event) => {
+    event.persist()
+    let id= parseInt(event.target.dataset.id)
+    let likes= parseInt(event.target.dataset.likes)
+    let updatedLikes= likes + 1
+    this.props.addLike(id, updatedLikes)
   }
 
   render(){
@@ -32,6 +42,16 @@ class AdventureSearch extends React.Component{
         <img className="image_thumbnail" alt="adventure" src={adventure.image_url}/>
         <h1>{adventure.title}</h1>
         <p>{adventure.description}</p>
+        <a href={adventure.website_url}>Learn More</a>
+        <p>Like: <button data-id= {adventure.id} data-likes={adventure.likes} onClick={this.likeHandler}>{adventure.likes}</button> </p>
+
+        <h3>Comments: </h3>
+
+        {adventure.comments.map(comment =>
+          <ul key= {comment.id}>
+          <p>{comment.text}</p>
+          </ul>) }
+
         </ul>)}
 
       </div>
@@ -40,8 +60,9 @@ class AdventureSearch extends React.Component{
 
 function mapStateToProps(state){
   return{
-    adventures: state.adventures
+    adventures: state.adventures,
+    users: state.users
   }
 }
 
-export default connect(mapStateToProps)(AdventureSearch)
+export default connect(mapStateToProps, {addLike})(AdventureSearch)
