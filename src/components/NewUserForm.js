@@ -1,8 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
-
 import { createUser } from '../actions/createUser'
-
 
 class NewUserForm extends React.Component {
 
@@ -11,6 +9,7 @@ class NewUserForm extends React.Component {
     this.state={
       name: "",
       password: "",
+      password_confirmation: "",
       email: "",
       city: "",
       state: ""
@@ -25,10 +24,13 @@ class NewUserForm extends React.Component {
 
   handleOnSubmit = event => {
     event.preventDefault();
+    console.log(this.state)
     this.props.createUser(this.state)
+
     this.setState({
       name: "",
       password: "",
+      password_confirmation: "",
       email: "",
       city: "",
       state: ""
@@ -47,6 +49,9 @@ class NewUserForm extends React.Component {
         <br/><br/>
         <label>Password:</label>
         <input type="text" name="password" value={this.state.password} onChange={this.handleOnChange}/>
+        <br/><br/>
+        <label>Password Confirmation:</label>
+        <input type="text" name="password_confirmation" value={this.state.password_confirmation} onChange={this.handleOnChange}/>
         <br/><br/>
         <label>Email:</label>
         <input type="text" name="email" value={this.state.email} onChange={this.handleOnChange}/>
