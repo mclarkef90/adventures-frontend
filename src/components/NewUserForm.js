@@ -10,6 +10,7 @@ class NewUserForm extends React.Component {
     super(props);
     this.state={
       name: "",
+      password: "",
       email: "",
       city: "",
       state: ""
@@ -27,6 +28,7 @@ class NewUserForm extends React.Component {
     this.props.createUser(this.state)
     this.setState({
       name: "",
+      password: "",
       email: "",
       city: "",
       state: ""
@@ -40,8 +42,11 @@ class NewUserForm extends React.Component {
       <div>
         <form onSubmit={this.handleOnSubmit}>
         <h2>Create User Profile</h2>
-        <label>Name:</label>
+        <label>Username:</label>
         <input type="text" name="name" value={this.state.name} onChange={this.handleOnChange}/>
+        <br/><br/>
+        <label>Password:</label>
+        <input type="text" name="password" value={this.state.password} onChange={this.handleOnChange}/>
         <br/><br/>
         <label>Email:</label>
         <input type="text" name="email" value={this.state.email} onChange={this.handleOnChange}/>
